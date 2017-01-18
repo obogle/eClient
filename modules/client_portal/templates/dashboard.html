@@ -1,0 +1,69 @@
+
+
+
+        
+
+                                    <div class="row" >
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" > 
+                                            <div id="policyAlerts" style="margin-top:20px;">
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <br/>
+                                    
+                                    <div class="row" ><!---account menu row--->
+                                        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9"> <!---account --->
+                                       
+
+
+                                                <h3  style="color:#006;"><i class="fa fa-file"></i> Account Summary</h3><hr/><br/>
+                                                <div class="row"  ng-repeat="detail in accountDetails" style="padding-bottom:10px;">
+                                                	<span class="text-info col-xs-3 col-sm-4 col-md-4 col-lg-4">
+                                                    	{{detail.TAG}}:
+                                                     </span>
+                                                     <span class="col-xs-9 col-sm-6 col-md-6 col-lg-6">   
+                                                		<span editable-text="detail.DATA" edit-mode="editModeEdit" ngmodel="accountInfo"></span>
+                                                     </span>
+                                                     <span class="col-xs-9 col-sm-2 col-md-2 col-lg-2"> 
+                                                     	<a href class="text-success"  ng-show="!editModeEdit && {{detail.EDIT}}" ng-click="editModeEdit=true"><span class="fa fa-pencil"></span> Edit</a>
+                                                        <a href class="text-warning"  ng-show="editModeEdit" ng-click="editModeEdit=false">In edit mode...</a>
+                                                     </span>
+                                                     
+                                                </div>
+                                        </div><!--- / account --->
+                                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"><!---menu --->
+
+                                            <div class="sidebar-nav-fixed pull-right <!---affix---> hidden-xs " >
+                                                    <div class="well ">
+                                                        <ul class="nav">
+                                                            <li class="nav-header"><i class="fa fa-list-ul"></i> Quick Menu</li>
+                                                            <li><a href="#"><i class="fa fa-history"></i> Renewals</a>
+                                                            </li>
+                                                            <!---<li><a href="#">Claims</a></li>--->
+                                                            
+                                                            <li><a href="#"><i class="fa fa-book"></i> View Account</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div> <!--/.well -->
+                                                </div> <!--/sidebar-nav-fixed -->
+                                           
+                                           
+                                        </div><!---/ menu --->
+                                    </div><!--- / account menu row--->
+                                    
+                                    
+                                    <div class="row" ><!---policy row--->
+                                            <div id="policyDetails" style="margin-top:40px;">
+                                                <div class="panel-group" id="policyAccordianDetails"><!--- accordian--->
+                                                 
+                                               
+                                               
+                                                </div> <!--- / accordian--->
+                                            </div>
+                                    </div> <!---/ policy row--->
+                                    
+                                    
+                             

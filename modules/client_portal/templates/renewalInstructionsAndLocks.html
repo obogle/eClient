@@ -1,0 +1,727 @@
+
+<br/>
+<h1 style="color:#006" class="hidden-xs"><i class="fa fa-laptop"></i> Online Renewals with ICWI</h1>
+<br/>
+
+    
+        We make renewing EASY!
+        <br/><br/>
+        
+        <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at metus sit amet sem sagittis porta a et eros. Mauris eget enim sit amet neque scelerisque dignissim. Maecenas ultricies sollicitudin ligula, eget tristique sapien vehicula non. Suspendisse non ex non sem ornare tincidunt. 
+        </p>
+
+<br/>
+
+<div class="table-responsive">
+    <table class="table">
+        <tr ng-repeat="inOne in data">
+                <td  ng-repeat="inTwo in inOne.clnt_locks " style="text-align:center" class="text-danger"> 
+                    <a href class="text-danger"  uib-tooltip="Click to expand" popover-placement="top" ng-click="dispayLockOption(inTwo.CODE)">
+                        <i class="fa fa-lock fa-4x"></i>
+                        <br/>
+                        {{inTwo.TAG}} 
+                     </a>
+                </td>
+        </tr>
+    </table>
+</div>
+
+
+<div ng-repeat="inOne in data">
+  <div ng-show="inTwo.CODE == lockSwitch" ng-repeat="inTwo in inOne.clnt_locks" >
+  <br/>
+	<div style="color:#0059B1;font-size:30px;">{{inTwo.TAG}}</div>
+    <br/>
+    <uib-alert  type="warning"><div style="font-size:20px;"><i class="fa fa-info-circle"></i> {{inTwo.DATA}}</div></uib-alert>
+  </div>
+ 
+</div>
+
+<div id="personalInformationForm"   ng-show="lockSwitch=='s'"  ><!--- container for supporting divs  --->
+                    <div class="row"><!--- row for supporting divs--->
+                        <div  class="col-sm-9 col-sm-offset-1 form-box ">             
+                             <div id="" class="kioskGeneralForm wrapper" style="display:;"> <!---start of personal information  form--->
+                                        
+                                        <span  id="piPolicyNumber" style="display:none"></span>
+                                            1) Have any of the following changed?
+                                            <br/>
+                                            <div style="margin-left:30px;">
+                                            
+                                            <form  name="renewalForm"  novalidate>  
+                                                <div class="form-group" >
+                                                    a) Email address: {{piEmailAddressText}} 
+                                                    <input type="radio" ng-model="piemaildifferent" value="false" ng-required="true" >No 
+                                                    <input type="radio"  ng-model="piemaildifferent" value="true" ng-required="true" >Yes
+                                                    <div ng-show="piemaildifferent == 'true'">
+                                                        If yes, enter your new email: <input type="text" id="piEmailAddress" name="piEmailAddress" class="form-control validateEmail"  placeholder="Email" autocomplete="off"/>
+                                                    </div >
+                                                    <br/>
+                                                </div>
+                                                <div class="form-group">
+                                                    b) Mailing Address: {{pimailingdifferentText}} 
+                                                    <input type="radio" ng-model="pimailingdifferent" value="false" ng-required="true">No 
+                                                    <input type="radio" ng-model="pimailingdifferent" value="true" ng-required="true">Yes
+                                                    <div  ng-show="pimailingdifferent == 'true'">
+                                                        If yes, enter your new mailing address <input type="text" id="piMailingaddr1" name="piMailingaddr1" class="form-control"  placeholder="Mailing Address" autocomplete="off"/>
+                                                    </div >
+                                                    <br/>
+                                                 </div>
+                                                 <div class="form-group">  
+                                                    c) Numbers: {{pinumbersdifferentText}} 
+                                                    <input type="radio" ng-model="pinumbersdifferent"  value="false" ng-required="true">No 
+                                                    <input type="radio" ng-model="pinumbersdifferent"  value="true" ng-required="true">Yes
+                                                    <div  ng-show="pinumbersdifferent == 'true'">
+                                                        If yes, enter your new number <input type="text"  id="pinumbers" name="pinumbers" class="form-control validatePhoneNumber"  placeholder="number" autocomplete="off"/>
+                                                    </div >
+                                                    <br/>
+                                                </div>
+                                                <div class="form-group">
+                                                    d) Place of Residence: {{piaddr1Text}} 
+                                                    <input type="radio" ng-model="piresidencedifferent" value="false" ng-required="true">No 
+                                                    <input type="radio" ng-model="piresidencedifferent"  value="true" ng-required="true">Yes
+                                                    <div  ng-show="piresidencedifferent == 'true'">
+                                                        If yes, enter your new address: <input type="text" id="piresidence"  name="piresidence" class="form-control"  placeholder="Permanent Address" autocomplete="off"/>
+                                                    </div >
+                                                    <br/>
+                                                </div>    
+                                                
+                                                <div class="form-group">
+                                                    e) Your business or profession: {{piEnteryourOccupationText}} 
+                                                    <input type="radio" ng-model="pioccupationdifferent"  value="false" ng-required="true">No 
+                                                    <input type="radio" ng-model="pioccupationdifferent"   value="true" ng-required="true">Yes
+                                                    <div  ng-show="pioccupationdifferent == 'true'">
+                                                        If yes, enter business or profession: <input type="text" id="pioccupation" name="pioccupation" class="form-control"  placeholder="business or profession" autocomplete="off"/>
+                                                    </div >
+                                                    <br/>
+                                                </div>
+                                                
+                                            </div>
+                                        <hr/>
+                                        2) Has your Business/Employer's Name & Address changed? {{piEmployeraddr1Text}} 
+                                        <input type="radio" ng-model="piemployerdifferent" value="false" ng-required="true">No 
+                                        <input type="radio"ng-model="piemployerdifferent" value="true" ng-required="true" >Yes
+                                        <div  ng-show="piemployerdifferent == 'true'">
+                                            If yes, enter your Business/Employer's Name & Address: <input type="text" id="piemployer" name="piemployer" class="form-control"  placeholder="Business/Employer's Name & Address" autocomplete="off"/>
+                                        </div >
+                                        
+                                        <br/>
+                                        <hr/>
+                                        
+                                        3) Has the vehicle been used or is it intended to be used for any purpose other than what was previously declared? 
+                                        <input type="radio" ng-model="piusagedifferent"  value="false" ng-required="true">No 
+                                        <input type="radio" ng-model="piusagedifferent" value="true" ng-required="true" >Yes
+                                        <div  ng-show="piusagedifferent == 'true'">
+                                            If yes, what is the intended use: <input type="text" id="piusage" name="piusage" class="form-control"  placeholder="intended use" autocomplete="off"/>
+                                        </div >
+                                        
+                                        <br/>
+                                        <hr/>
+                                        
+                                        4) Are you still the owner of the vehicle? 
+                                        <input type="radio" ng-model="piownerdifferent"  value="true" ng-required="true">No 
+                                        <input type="radio" ng-model="piownerdifferent"  value="false" ng-required="true">Yes
+                                        <div  ng-show="piownerdifferent == 'true'">
+                                            If no, who is the owner: <input type="text" id="piowner" name="piowner" class="form-control"  placeholder="owner's name" autocomplete="off"/>
+                                        </div >
+                                        
+                                        <br/> 
+                                        <hr/>
+                                        5)Does any other party, apart from an existing mortgagee, have an interest in the vehicle that is being insured? 
+                                        <input type="radio" ng-model="piinterestdifferent"  value="false" ng-required="true">No 
+                                        <input type="radio" ng-model="piinterestdifferent"  value="true" ng-required="true">Yes
+                                        <div  ng-show="piinterestdifferent == 'true'">
+                                            If yes, name party: <input type="text" id="piinterest" name="piinterest" class="form-control"  placeholder="party's name" autocomplete="off"/>
+                                        </div >
+                                        
+                                        <br/> 
+                                        <hr/>
+                                        6) Do you have complete custody and control of the insured vehicle? 
+                                        <input type="radio" ng-model="picustodydifferent" value="true" ng-required="true">No 
+                                        <input type="radio" ng-model="picustodydifferent"  value="false" ng-required="true">Yes
+                                        <div  ng-show="picustodydifferent == 'true'">
+                                            If no, who else has custody? <input type="text" id="picustody" name="picustody" class="form-control"  placeholder="person's name" autocomplete="off"/>
+                                        </div >
+                                        
+                                        <br/> 
+                                        <hr/>
+                                        7) Have you or any regular driver been fined, had their licence endorsed/revoked, or been prosecuted for a motoring offence? 
+                                        <input type="radio" ng-model="pifineddifferent" value="false" ng-required="true">No 
+                                        <input type="radio" ng-model="pifineddifferent" value="true" ng-required="true">Yes
+                                        <div  ng-show="pifineddifferent == 'true'">
+                                            If yes, name person: <input type="text" id="pifined" name="pifined" class="form-control"  placeholder="person's name" autocomplete="off"/>
+                                        </div >
+                                        
+                                        <br/> 
+                                        <hr/>
+                                        8) Do you or any regular driver suffer from any illness or medical condition, whether physical or mental, including but not limited to, diabetes, hypertension, epilepsy, stroke, heart condition, fainting spells, hallucinations, defective vision or hearing? 
+                                        <input type="radio" ng-model="pisickdifferent"  value="false" ng-required="true">No 
+                                        <input type="radio" ng-model="pisickdifferent"  value="true" ng-required="true" >Yes
+                                        <div  ng-show="pisickdifferent == 'true'">
+                                            If yes, name person: <input type="text" id="pisick" name="pisick" class="form-control"  placeholder="person's name" autocomplete="off"/>
+                                        </div >
+                                        
+                                        <br/>
+                                        <hr/>
+                                        9) Have you had any accidents you have not advised us of? 
+                                        <input type="radio" ng-model="piaccidentdifferent" value="false" ng-required="true">No 
+                                        <input type="radio" ng-model="piaccidentdifferent"  value="true" ng-required="true">Yes
+                                        <div  ng-show="piaccidentdifferent == 'true'">
+                                            If yes, please describe: <input type="text" id="piaccident" name="piaccident" class="form-control"  placeholder="enter description" autocomplete="off"/>
+                                        </div >
+                                        
+                                        <br/>
+                                        <hr/>
+                                        10) Will any males under 30, who were not previously declared, drive the insured vehicle? 
+                                        <br/>
+                                        <input type="radio" ng-model="piyoungMledifferent" value="false" ng-required="true">No 
+                                        <input type="radio" ng-model="piyoungMledifferent"   value="true" ng-required="true">Yes
+                                        <div  ng-show="piyoungMledifferent == 'true'">
+                                            If yes, name person: <input type="text" id="piyoungMl" name="piyoungMl" class="form-control"  placeholder="person's name" autocomplete="off"/>
+                                        </div >
+                                        
+                                        <br/>
+                                        <hr/>
+                                        11) Will any females under 20, who were not previously declared, drive the insured vehicle? 
+                                        <br/>
+                                        <input type="radio" ng-model="piyoungFemaledifferent"  value="false" ng-required="true">No 
+                                        <input type="radio" ng-model="piyoungFemaledifferent"  value="true" ng-required="true" >Yes
+                                        <div  ng-show="piyoungFemaledifferent == 'true'">
+                                            If yes, name person: <input type="text" id="piyoungFemale" name="piyoungFemale" class="form-control"  placeholder="person's name" autocomplete="off"/>
+                                        </div >
+                                        
+                                        <br/>
+                                        
+                                        <br/>
+                                        <!---
+                                        <button type="button" id="picancelBttn" class="btn-danger btn-lg" onClick="wannaSeeCSR('#personalInformationForm','Please ask any CSR to assist you with updating your personal information in the system')">I want to do this manually</button>
+                                        --->
+                                        <button type="submit"  class="btn-success btn-lg"  onClick="submitQuestionaire(user, renewalForm.$valid)">I verify that all this information is correct</button>
+                                        <br/>
+                                     </form>   
+                             </div><!---end of personal information form--->
+                             
+                             
+                             
+                        </div><!--- /wrapper Bottom for supporting divs--->
+                    </div>
+                </div><!--- /row for supporting divs--->
+                
+                
+            </div><!--- / container for supporting divs --->
+                
+            
+            
+            
+            
+            
+            
+            
+            
+            <div id="pocaForm"  class="container"  ><!--- container for supporting divs ng-show="lockSwitch=='AU'"--->
+                    	<div class="row"><!--- row for supporting divs--->
+                        	<div class="col-sm-9 col-sm-offset-1 form-box ">                          
+                                <div class="kioskGeneralForm wrapper" > <!---start of poca form--->
+                                	<form  name="pocaForm"  novalidate>    
+
+                                           
+                                            <div class="form-group">
+                                                <label class="sr-only" for="male">Policy Number</label>
+                                                <div ng-show="pocaForm.$submitted || pocaForm.PolicyNumber.$touched" class="text-danger">
+                                                  <div ng-show="pocaForm.PolicyNumber.$error.required || pocaForm.PolicyNumber.$error.number"><i class="fa fa-asterisk"></i> Policy number required (numbers only)</div>
+                                                </div>
+                                                <input type="number"  ng-model="user.PolicyNumber" name="PolicyNumber" class="form-control"  placeholder="Policy Number" required=""  autocomplete="off"/>
+                                                
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label class="sr-only" for="male">Name</label>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                        <div ng-show="pocaForm.$submitted || pocaForm.FirstName.$touched" class="text-danger">
+                                                          <div ng-show="pocaForm.FirstName.$error.required || pocaForm.FirstName.$error.pattern"><i class="fa fa-asterisk"></i> First name Required (no symbols or numbers)</div>
+                                                        </div>
+                                                        <input type="text" ng-model="user.FirstName" required="" name="FirstName" ng-pattern="/^[A-Za-z\-]+$/" class="form-control"  placeholder="Your First Name" autocomplete="off"/>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                        <div ng-show="pocaForm.$submitted || pocaForm.MiddleName.$touched" class="text-danger">
+                                                          <div ng-show="pocaForm.MiddleName.$error.required || pocaForm.MiddleName.$error.pattern"><i class="fa fa-info-circle"></i> Oops no symbols or numbers</div>
+                                                        </div>
+                                                        <input type="text" ng-model="user.MiddleName"  ng-pattern="/^[A-Za-z\-]+$/" name="MiddleName" class="form-control"  placeholder="Your Middle Name" autocomplete="off"/>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                        <div ng-show="pocaForm.$submitted || pocaForm.LastName.$touched" class="text-danger">
+                                                          <div ng-show="pocaForm.LastName.$error.required || pocaForm.LastName.$error.pattern"><i class="fa fa-asterisk"></i> Last name Required (no symbols or numbers)</div>
+                                                        </div>
+                                                        <input type="text" ng-model="user.LastName"  required="" ng-pattern="/^[A-Za-z\-]+$/" name="LastName" class="form-control"  placeholder="Your Last Name" autocomplete="off"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="form-group">
+                                                
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                    	<label for="male" class="sr-only">AKA</label>
+                                               		 	<input type="text" ng-model="user.aka" name="aka" class="form-control"  placeholder="AKA (Otherwise Known As)" autocomplete="off"/>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                        <label for="male"  class="sr-only">Email Address</label>
+                                                        <div ng-show="pocaForm.$submitted || pocaForm.EmailAddress.$touched" class="text-danger">
+                                                          <div ng-show="pocaForm.EmailAddress.$error.required || pocaForm.EmailAddress.$error.pattern"><i class="fa fa-asterisk"></i> Please enter a valid email address</div>
+                                                        </div>
+                                                        <input type="email" ng-model="user.EmailAddress" name="EmailAddress" required=""  class="form-control" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/"  placeholder="Your Email Address"  autocomplete="off"/>
+                                           
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="form-group">
+                                            	<label for="male" class="sr-only">Address</label>
+                                                <div ng-show="pocaForm.$submitted || pocaForm.addr1.$touched" class="text-danger">
+                                                  <div ng-show="pocaForm.addr1.$error.required"><i class="fa fa-asterisk"></i> Address is required</div>
+                                                </div>
+                                                <input type="text" ng-model="user.addr1"  required="" name="addr1" class="form-control"  placeholder="Your Home Address" autocomplete="off"/>
+                                            </div>
+                                            
+                                            <label>Is your mailing address different from your permanent address?</label> 
+                                            <input type="radio" ng-model="user.mailingdifferent" value="false" ng-checked="true">No 
+                                            <input type="radio" ng-model="user.mailingdifferent" value="true">Yes
+                                            <br/>
+                                            <div class="form-group">
+                                                <div ng-show="user.mailingdifferent == 'true'">
+                                                    <label class="sr-only" for="male">Mailing Address</label>
+                                                    <div ng-show="pocaForm.$submitted || pocaForm.Mailingaddr1.$touched" class="text-danger">
+                                                      <div ng-show="pocaForm.Mailingaddr1.$error.required"><i class="fa fa-asterisk"></i> You need to tell us your new address</div>
+                                                    </div>
+                                                    <input type="text" ng-model="user.Mailingaddr1"  ng-required="user.mailingdifferent == 'true'" name="Mailingaddr1" class="form-control"  placeholder="Mailing Address" autocomplete="off"/>   
+                                                </div>
+                                             </div>
+                                             
+                                             <div class="form-group">
+                                                
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                    	<label for="male" class="sr-only">Place of Birth</label>
+                                                        <div ng-show="pocaForm.$submitted || pocaForm.CountryofBirth.$touched" class="text-danger">
+                                                          <div ng-show="pocaForm.CountryofBirth.$error.required || pocaForm.CountryofBirth.$error.pattern"><i class="fa fa-asterisk"></i> Country required (letters only)</div>
+                                                        </div>
+                                               		 	 <input type="text"  ng-model="user.CountryofBirth"  required=""  name="CountryofBirth" class="form-control"  placeholder="Country of Birth" />
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                        <label for="male" class="sr-only">Nationality</label>
+                                                        <div ng-show="pocaForm.$submitted || pocaForm.Nationality.$touched" class="text-danger">
+                                                          <div ng-show="pocaForm.Nationality.$error.required || pocaForm.Nationality.$error.pattern"><i class="fa fa-asterisk"></i> Nationality required (letters only)</div>
+                                                        </div>
+                                                        <input type="text" ng-model="user.Nationality"  required="" name="Nationality" ng-pattern="/^[A-Za-z]+$/"  class="form-control"  placeholder="Nationality"/>
+                                           
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="form-group">
+                                                <label class="sr-only"  for="male">Numbers</label>
+                                                <div class="row">
+                                                	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                    	<div ng-show="pocaForm.$submitted || pocaForm.CellNumber.$touched || pocaForm.HomeNumber.$touched || pocaForm.WorkNumber.$touched" class="text-danger">
+                                                          <div ng-show="pocaForm.CellNumber.$error.required || pocaForm.CellNumber.$error.pattern || pocaForm.HomeNumber.$error.pattern || pocaForm.WorkNumber.$error.pattern">
+                                                          	<i class="fa fa-asterisk"></i> At least one number required (10 digits, numbers only)
+                                                            <br/>
+                                                            <i class="fa fa-info-circle"></i> Remember the area code (876 for jamaica)</div>
+                                                            <br/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                        <input type="text" ng-model="user.CellNumber"  ng-required="!user.WorkNumber && !user.HomeNumber" ng-pattern="/^[0-9]{10}$/" name="CellNumber" class="form-control "  placeholder="Cell Number" autocomplete="off"/>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                        <input type="text" ng-model="user.HomeNumber"  ng-pattern="/^[0-9]{10}$/" name="HomeNumber" class="form-control "  placeholder="Home Number"  autocomplete="off"/>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                        <input type="text" ng-model="user.WorkNumber"   ng-pattern="/^[0-9]{10}$/" name="WorkNumber" class="form-control "  placeholder="Work Number"  autocomplete="off"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                           <label for="male">Date of Birth:</label><br/>
+                                           <div class="form-group">
+                                                <div class="row">
+                                                       
+                                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                    	<div ng-show="pocaForm.$submitted || pocaForm.dobday.$touched" class="text-danger">
+                                                          <div ng-show="pocaForm.dobday.$error.required"><i class="fa fa-asterisk"></i> Day required</div>
+                                                        </div>
+                                                        <select ng-model="user.dobday"  required=""  name="dobday"  class="form-control ">
+                                                          <option value="">Day</option>
+                                                          <option value="">---</option>
+                                                          <option value="01">01</option>
+                                                          <option value="02">02</option>
+                                                          <option value="03">03</option>
+                                                          <option value="04">04</option>
+                                                          <option value="05">05</option>
+                                                          <option value="06">06</option>
+                                                          <option value="07">07</option>
+                                                          <option value="08">08</option>
+                                                          <option value="09">09</option>
+                                                          <option value="10">10</option>
+                                                          <option value="11">11</option>
+                                                          <option value="12">12</option>
+                                                          <option value="13">13</option>
+                                                          <option value="14">14</option>
+                                                          <option value="15">15</option>
+                                                          <option value="16">16</option>
+                                                          <option value="17">17</option>
+                                                          <option value="18">18</option>
+                                                          <option value="19">19</option>
+                                                          <option value="20">20</option>
+                                                          <option value="21">21</option>
+                                                          <option value="22">22</option>
+                                                          <option value="23">23</option>
+                                                          <option value="24">24</option>
+                                                          <option value="25">25</option>
+                                                          <option value="26">26</option>
+                                                          <option value="27">27</option>
+                                                          <option value="28">28</option>
+                                                          <option value="29">29</option>
+                                                          <option value="30">30</option>
+                                                          <option value="31">31</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                    	<div ng-show="pocaForm.$submitted || pocaForm.dobmonth.$touched" class="text-danger">
+                                                          <div ng-show="pocaForm.dobmonth.$error.required"><i class="fa fa-asterisk"></i> Month required</div>
+                                                        </div>
+                                                        <select ng-model="user.dobmonth"  required=""  name="dobmonth" class="form-control ">
+                                                          <option value="">Month</option>
+                                                          <option value="">-----</option>
+                                                          <option value="01">January</option>
+                                                          <option value="02">February</option>
+                                                          <option value="03">March</option>
+                                                          <option value="04">April</option>
+                                                          <option value="05">May</option>
+                                                          <option value="06">June</option>
+                                                          <option value="07">July</option>
+                                                          <option value="08">August</option>
+                                                          <option value="09">September</option>
+                                                          <option value="10">October</option>
+                                                          <option value="11">November</option>
+                                                          <option value="12">December</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                    	<div ng-show="pocaForm.$submitted || pocaForm.year.$touched" class="text-danger">
+                                                          <div ng-show="pocaForm.year.$error.required || pocaForm.year.$error.pattern"><i class="fa fa-asterisk"></i> Year required (numbers only)</div>
+                                                        </div>
+                                            			<input type="text" ng-model="user.year"  required="" ng-pattern="/^[0-9]{4}$/" name="year" class="form-control  "  placeholder="Your Birth Year" autocomplete="off"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <label for="male">Mother's Maiden Name:</label><br/>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                    	<div ng-show="pocaForm.$submitted || pocaForm.MotherFirstName.$touched" class="text-danger">
+                                                          <div ng-show="pocaForm.MotherFirstName.$error.required || pocaForm.MotherFirstName.$error.pattern"><i class="fa fa-asterisk"></i> First name required (no symbols or numbers)</div>
+                                                        </div>
+                                                        <input type="text" ng-model="user.MotherFirstName"  required="" ng-pattern="/^[A-Za-z\-]+$/" name="MotherFirstName" class="form-control "  placeholder="Mothers First Name" autocomplete="off"/>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                    	<div ng-show="pocaForm.$submitted || pocaForm.MotherMiddleName.$touched" class="text-danger">
+                                                          <div ng-show="pocaForm.MotherMiddleName.$error.required || pocaForm.MotherMiddleName.$error.pattern"><i class="fa fa-info-circle"></i> Oops no symbols or numbers</div>
+                                                        </div>
+                                                        <input type="text" ng-model="user.MotherMiddleName"  ng-pattern="/^[A-Za-z\-]+$/" name="MotherMiddleName" class="form-control"  placeholder="Mother's Middle Name" autocomplete="off"/>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                    	<div ng-show="pocaForm.$submitted || pocaForm.MotherLastName.$touched" class="text-danger">
+                                                          <div ng-show="pocaForm.MotherLastName.$error.required || pocaForm.MotherLastName.$error.pattern"><i class="fa fa-asterisk"></i> Llast name required (no symbols or numbers)</div>
+                                                        </div>
+                                                        <input type="text" ng-model="user.MotherLastName"  required="" ng-pattern="/^[A-Za-z\-]+$/" name="MotherLastName" class="form-control "  placeholder="Mother's Last Name" autocomplete="off"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                             
+                                                                               
+                                            <label for="male"></label>
+                                            <div class="form-group">
+                                            	
+                                            	<label for="male" class="sr-only">Occupation</label>
+                                             	<div ng-show="pocaForm.$submitted || pocaForm.EnteryourOccupation.$touched" class="text-danger">
+                                                  <div ng-show="pocaForm.EnteryourOccupation.$error.required "><i class="fa fa-asterisk"></i> Occupation required (no symbols or numbers)</div>
+                                                </div>
+                                                <input type="text"  ng-model="user.EnteryourOccupation"  required=""  name="EnteryourOccupation" class="form-control "  placeholder="Your Occupation" autocomplete="off"/>
+                                            </div>
+                                            <div class="form-group">
+                                           		<label>Do you have any other source of income?</label> 
+                                                <input type="radio" ng-model="user.anotherSource" name="anotherSource" value="false" ng-checked="true">No 
+                                                <input type="radio" ng-model="user.anotherSource"  name="anotherSource" value="true">Yes
+                                            </div>
+                                           
+                                           <div class="form-group">
+                                                <div ng-show="user.anotherSource == 'true'">
+                                                    <label class="sr-only" for="male">Describe Source</label>
+                                                    <div ng-show="pocaForm.$submitted || pocaForm.descSrc.$touched" class="text-danger">
+                                                      <div ng-show="pocaForm.descSrc.$error.required "><i class="fa fa-asterisk"></i> Please tell us about the other source</div>
+                                                    </div>
+                                                    <input type="text" ng-model="user.descSrc"  ng-required="anotherSource == 'true'" name="descSrc" class="form-control"  placeholder="Describe other source" autocomplete="off"/> 
+                                                </div>
+                                           </div>
+                                           
+                                           <div class="form-group">
+                                           		<label class="sr-only" for="male"> Employer Name & Address </label>
+                                                <div ng-show="pocaForm.$submitted || pocaForm.Employeraddr1.$touched" class="text-danger">
+                                                  <div ng-show="pocaForm.Employeraddr1.$error.required "><i class="fa fa-asterisk"></i> Employer's address and name is required</div>
+                                                </div>
+                                            	<input type="text" ng-model="user.Employeraddr1"  required="" name="Employeraddr1"  class="form-control "  placeholder="Employer Address and Name" autocomplete="off"/>
+                                           </div>
+                                            
+                                            <div class="form-group">
+                                                <label class=""  for="male">What ID are you using:</label><br/>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                    	<div ng-show="pocaForm.$submitted || pocaForm.idType.$touched" class="text-danger">
+                                                          <div ng-show="pocaForm.idType.$error.required "><i class="fa fa-asterisk"></i> ID type required</div>
+                                                        </div>
+                                                        <select ng-model="user.idType"  required="" name="idType" class="form-control  ">
+                                                          <option value="">ID Type</option>
+                                                          <option value="">-----</option>
+                                                          <option value="TRN">TRN</option>
+                                                          <!---<option value="DLNo">Driver's Licence</option>--->
+                                                          <option value="PPort">Passport</option>
+                                                          <option value="NID">National ID</option>
+                                                          <option value="Other">Other</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                    	<div ng-show="pocaForm.$submitted || pocaForm.idNumber.$touched" class="text-danger">
+                                                          <div ng-show="pocaForm.idNumber.$error.required "><i class="fa fa-asterisk"></i> ID number required</div>
+                                                        </div>
+                                                        <input type="text" ng-model="user.idNumber"  required="" name="idNumber" class="form-control "  placeholder="Identification Number" autocomplete="off"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <div ng-show="user.idType == 'Other'">
+                                                    <label class="sr-only" for="male">Specify Type of ID</label>
+                                                    <div ng-show="pocaForm.$submitted || pocaForm.otherIDType.$touched" class="text-danger">
+                                                      <div ng-show="pocaForm.otherIDType.$error.required "><i class="fa fa-asterisk"></i> What type if ID are you using?</div>
+                                                    </div>
+                                                    <input type="text" ng-model="user.otherIDType"  ng-required="user.idType == 'Other'" name="otherIDType" class="form-control"  placeholder="Describe Type of ID" autocomplete="off"/>
+                                                </div>
+                                           </div>
+                                         
+                                           <div class="form-group">
+                                           		
+                                           		<label>TRN</label>
+                                                <div ng-show="pocaForm.$submitted || pocaForm.TRNNumber.$touched" class="text-danger">
+                                                  <div ng-show="pocaForm.TRNNumber.$error.required || pocaForm.TRNNumber.$error.pattern"><i class="fa fa-asterisk"></i> TRN is required (9 numbers)</div>
+                                                </div>
+                                                <input type="text" ng-model="user.TRNNumber"  required="" ng-pattern="/^[0-9]{9}$/" name="TRNNumber" class="form-control  "  placeholder="TRN Number" autocomplete="off"/>  
+                                            </div> 
+                                               
+                                            <br/>
+                                            <label for="male">ID Expiry Date:</label><br/>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                       
+                                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                        <div ng-show="pocaForm.$submitted || pocaForm.expDay.$touched" class="text-danger">
+                                                          <div ng-show="pocaForm.expDay.$error.required "><i class="fa fa-asterisk"></i> Day is required</div>
+                                                        </div>
+                                                        <select ng-model="user.expDay"  required="" name="expDay"  class="form-control ">
+                                                          <option value="">Day</option>
+                                                          <option value="">---</option>
+                                                          <option value="01">01</option>
+                                                          <option value="02">02</option>
+                                                          <option value="03">03</option>
+                                                          <option value="04">04</option>
+                                                          <option value="05">05</option>
+                                                          <option value="06">06</option>
+                                                          <option value="07">07</option>
+                                                          <option value="08">08</option>
+                                                          <option value="09">09</option>
+                                                          <option value="10">10</option>
+                                                          <option value="11">11</option>
+                                                          <option value="12">12</option>
+                                                          <option value="13">13</option>
+                                                          <option value="14">14</option>
+                                                          <option value="15">15</option>
+                                                          <option value="16">16</option>
+                                                          <option value="17">17</option>
+                                                          <option value="18">18</option>
+                                                          <option value="19">19</option>
+                                                          <option value="20">20</option>
+                                                          <option value="21">21</option>
+                                                          <option value="22">22</option>
+                                                          <option value="23">23</option>
+                                                          <option value="24">24</option>
+                                                          <option value="25">25</option>
+                                                          <option value="26">26</option>
+                                                          <option value="27">27</option>
+                                                          <option value="28">28</option>
+                                                          <option value="29">29</option>
+                                                          <option value="30">30</option>
+                                                          <option value="31">31</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                    	<div ng-show="pocaForm.$submitted || pocaForm.expmonth.$touched" class="text-danger">
+                                                          <div ng-show="pocaForm.expmonth.$error.required "><i class="fa fa-asterisk"></i> Month is required</div>
+                                                        </div>
+                                                        <select ng-model="user.expmonth"  required="" name="expmonth"  class="form-control ">
+                                                          <option value="">Month</option>
+                                                          <option value="">-----</option>
+                                                          <option value="01">January</option>
+                                                          <option value="02">February</option>
+                                                          <option value="03">March</option>
+                                                          <option value="04">April</option>
+                                                          <option value="05">May</option>
+                                                          <option value="06">June</option>
+                                                          <option value="07">July</option>
+                                                          <option value="08">August</option>
+                                                          <option value="09">September</option>
+                                                          <option value="10">October</option>
+                                                          <option value="11">November</option>
+                                                          <option value="12">December</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                    	<div ng-show="pocaForm.$submitted || pocaForm.expyear.$touched" class="text-danger">
+                                                          <div ng-show="pocaForm.expyear.$error.required || pocaForm.expyear.$error.pattern"><i class="fa fa-asterisk"></i> Year required (numbers only)</div>
+                                                        </div>
+                                            			<input type="text" ng-model="user.expyear"  required="" ng-pattern="/^[0-9]{4}$/" name="expyear" class="form-control  "  placeholder="Expiry Year" autocomplete="off"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                           		<label>Are you or your relative/ close associate holding a prominent public office (e.g. Political body, senior government officer/official, judiciary, security forces)</label> 
+                                                <input type="radio" ng-model="user.prominentOfficer" value="false"  name="prominentOfficer"  ng-checked="true">No 
+                                                <input type="radio"  ng-model="user.prominentOfficer" value="true" name="prominentOfficer" >Yes   
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <div  ng-show="user.prominentOfficer == 'true'">
+                                                    <label class="" for="male">Please Describe: </label>
+                                                    <div ng-show="pocaForm.$submitted || pocaForm.descprominentOfficer.$touched" class="text-danger">
+                                                      <div ng-show="pocaForm.descprominentOfficer.$error.required"><i class="fa fa-asterisk"></i> Please describe your relation</div>
+                                                    </div>
+                                                    <input type="text" ng-model="user.descprominentOfficer" ng-required="user.prominentOfficer == 'true'"  name="descprominentOfficer" class="form-control"  placeholder="Enter description" autocomplete="off"/>
+                                                    
+                                                    <label>Are you the holder of the office?</label> 
+                                                    <input type="radio"  ng-model="user.pepIsMe" required="" value="false" name="pepIsMe" ng-checked="true">No 
+                                                    <input type="radio"  ng-model="user.pepIsMe" required="" value="true" name="pepIsMe">Yes
+                                                </div>
+                                           </div>
+                                            
+                                            <div class="form-group">
+                                                <div ng-show="user.pepIsMe == 'true'">
+                                                	<div class="row">
+                                                    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                        	<label>Are you married?</label>  
+                                                            <div ng-show="pocaForm.$submitted || pocaForm.marriedprominentOfficer.$touched" class="text-danger">
+                                                              <div ng-show="pocaForm.marriedprominentOfficer.$error.required"><i class="fa fa-asterisk"></i> Please tell us if you are married</div>
+                                                            </div>
+                                                            <input type="radio"  ng-model="user.marriedprominentOfficer" ng-required="user.pepIsMe == 'true'" value="false" name="marriedprominentOfficer"  >No 
+                                                            <input type="radio"  ng-model="user.marriedprominentOfficer" ng-required="user.pepIsMe == 'true'"  value="true" name="marriedprominentOfficerYes" >Yes
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                        	<label>How many children do you have?</label> 
+                                                            <div ng-show="pocaForm.$submitted || pocaForm.numChildrenprominentOfficer.$touched" class="text-danger">
+                                                              <div ng-show="pocaForm.numChildrenprominentOfficer.$error.required || pocaForm.numChildrenprominentOfficer.$error "><i class="fa fa-asterisk"></i> How many children do you have (max 26)</div>
+                                                            </div>
+                                                            <input type="number" ng-model="user.numChildrenprominentOfficer" ng-required="user.pepIsMe == 'true'" max="26"  name="numChildrenprominentOfficer" class="form-control "  placeholder="Number of Children"/>
+                                                    	</div>
+                                                    </div>
+                                                </div>
+                                           </div>
+                                           
+                                            
+                                            <div ng-show="user.marriedprominentOfficer == 'true'">
+                                            	<label for="male">Spouse's Name:</label><br/>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                    	<div ng-show="pocaForm.$submitted || pocaForm.SpouseFirstName.$touched" class="text-danger">
+                                                          <div ng-show="pocaForm.SpouseFirstName.$error.required || pocaForm.SpouseFirstName.$error.pattern"><i class="fa fa-asterisk"></i> Spounce's first required (no symbols or numbers)</div>
+                                                        </div>
+                                                        <input type="text" ng-model="user.SpouseFirstName" ng-required="user.marriedprominentOfficer == 'true'" ng-pattern="/^[A-Za-z\-]+$/" name="SpouseFirstName" class="form-control"  placeholder="Spouse's First Name" autocomplete="off"/>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                    	<div ng-show="pocaForm.$submitted || pocaForm.SpouseMiddleName.$touched" class="text-danger">
+                                                          <div ng-show=" pocaForm.SpouseMiddleName.$error.pattern"><i class="fa fa-info-circle"></i> Oops no symbols or numbers</div>
+                                                        </div>
+                                                        <input type="text" ng-model="user.SpouseMiddleName"  ng-pattern="/^[A-Za-z\-]+$/" name="SpouseMiddleName" class="form-control"  placeholder="Spouse's Middle Name" autocomplete="off"/>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                    	<div ng-show="pocaForm.$submitted || pocaForm.SpouseLastName.$touched" class="text-danger">
+                                                          <div ng-show="pocaForm.SpouseLastName.$error.required || pocaForm.SpouseLastName.$error.pattern"><i class="fa fa-asterisk"></i> Spouce's last required (no symbols or numbers)</div>
+                                                        </div>
+                                                        <input type="text" ng-model="user.SpouseLastName" ng-required="user.marriedprominentOfficer == 'true'"  ng-pattern="/^[A-Za-z\-]+$/" name="SpouseLastName" class="form-control"  placeholder="Spouse's Last Name" autocomplete="off"/>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="form-group">
+                                                    <label class="" for="male"> Spouse Address (if different)</label>
+                                                    <input type="text" ng-model="user.Spouseaddr1" name="Spouseaddr1"  class="form-control"  placeholder="Spouce's Address" autocomplete="off"/>
+                                                    
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group"  ng-show="user.numChildrenprominentOfficer > 0">
+                                            	<span ng-repeat="i in getNumber(user.numChildrenprominentOfficer) track by $index">
+                                                    <ng-form name="childForm" >
+                                                    	
+                                                        <label for="male">Name of child {{$index +1}}:</label><br/>
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                                <div ng-show="pocaForm.$submitted || childForm.ChildFirstName.$touched" class="text-danger">
+                                                                  <div ng-show="childForm.ChildFirstName.$error.required || childForm.ChildFirstName.$error.pattern"><i class="fa fa-asterisk"></i> Child's first required (no symbols or numbers)</div>
+                                                                </div>
+                                                                <input type="text" ng-model="user.ChildFirstName[$index]" required="" ng-pattern="/^[A-Za-z\-]+$/" name="ChildFirstName" class="form-control"  placeholder="Child's First Name" autocomplete="off"/>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                                <div ng-show="pocaForm.$submitted || childForm.ChildMiddleName.$touched" class="text-danger">
+                                                                  <div ng-show=" childForm.ChildMiddleName.$error.pattern"><i class="fa fa-info-circle"></i> Oops no symbols or numbers</div>
+                                                                </div>
+                                                                <input type="text" ng-model="user.ChildMiddleName[$index]"  ng-pattern="/^[A-Za-z\-]+$/" name="ChildMiddleName" class="form-control"  placeholder="Child's Middle Name" autocomplete="off"/>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                                <div ng-show="pocaForm.$submitted || childForm.ChildLastName.$touched" class="text-danger">
+                                                                  <div ng-show="childForm.ChildLastName.$error.required || childForm.ChildLastName.$error.pattern"><i class="fa fa-asterisk"></i> Child's last required (no symbols or numbers)</div>
+                                                                </div>
+                                                                <input type="text" ng-model="user.ChildLastName[$index]"  required=""  ng-pattern="/^[A-Za-z\-]+$/" name="ChildLastName" class="form-control"  placeholder="Child's Last Name" autocomplete="off"/>
+                                                            </div>
+                                                        </div>
+                                                        <br/>
+                                                        <div class="form-group">
+                                                            <label class="" for="male">Address of child {{$index +1}} (if different)</label>
+                                                            <input type="text" ng-model="user.Childaddr1[$index]" name="Childaddr1"  class="form-control"  placeholder="Child's Address" autocomplete="off"/>
+                                                        </div>
+                                                    </ng-form>
+                                                    <hr/>
+                                                </span>
+                                            </div>
+                                            
+                                            
+                                             <button type="button" id="pocacancelBttn" class="btn-danger btn-lg" onClick="wannaSeeCSR('#pocaForm','Please ask any CSR to assist you with filling out a POCA form')">I want to do this in branch</button>
+                                            <button type="submit" id="pocaBttn" class="btn-success btn-lg"  ng-click="submitPoca(user, pocaForm.$valid)" >Proceed</button>
+                                            <br/>
+                                     </form>       
+                                 </div><!---end of poca form--->
+                              </div>
+                         </div>
+                     </div>       
+                
+                {{info}}
+                
+                
+              
+  
+  
+                <br/><br/>

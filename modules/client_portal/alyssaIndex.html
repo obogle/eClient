@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="utf-8" />
+        <title>ICWI  Client Login</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        
+        <!-- find more at https://code.angularjs.org/1.2.0rc1/ -->
+		<script src="angular-route.min.js" ></script>
+        <script src="js/routes.js" ></script>
+        
+        
+        <script src="angular-idle.min.js"></script>
+        
+        <!---controllers--->
+        <script src="controllers/dashboardController.js" ></script>
+		<script src="controllers/loginController.js" ></script>
+        
+        <!---services--->
+        <script src="services/authServices.js" ></script>
+        
+    </head>
+    <body ng-app="loginApp">
+         
+         <div ng-view>
+     		
+         </div>
+    </body>
+</html>
